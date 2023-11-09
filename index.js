@@ -6,6 +6,7 @@ for(var i=0;i< document.querySelectorAll(".drum").length;i++){
     document.querySelectorAll("button")[i].addEventListener("click",function(){
         var p  = this.innerHTML;
         makesound(p);
+        animation(p);
             if (p == 'w'){
                 clickf("tom-1.mp3");
             } 
@@ -32,6 +33,7 @@ for(var i=0;i< document.querySelectorAll(".drum").length;i++){
 
 document.addEventListener("keypress" , function(event){
     makesound(event.key);
+    animation(event.key);
 });
 
 function makesound(key){
@@ -66,6 +68,16 @@ function clickf(st){
     var k = "./sounds/" + st;
     var s = new Audio(k);
     s.play();
+}
+
+function animation(buttonclick){
+
+    var c  = document.querySelector("."+ buttonclick);
+
+    c.classList.add("pressed");
+
+    setTimeout(function(){
+        c.classList.remove("pressed");    }, 100);
 }
 
 
